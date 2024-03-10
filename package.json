@@ -1,0 +1,15 @@
+{
+  "name": "ctf-2024",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:ui": "pnpm --filter ui run dev",
+    "dev:backend": "pnpm --filter backend run dev",
+    "dev:db": "docker-compose up --build -d"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
