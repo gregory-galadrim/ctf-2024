@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:ui": "pnpm --filter ui run dev",
-    "dev:backend": "pnpm --filter backend run dev",
-    "dev:db": "docker-compose up --build -d"
+    "dev:db": "docker-compose up --build -d",
+    "ui": "pnpm --filter ui",
+    "backend": "pnpm --filter backend",
+    "steps": "pnpm --filter steps"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.1"
+  }
 }
