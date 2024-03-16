@@ -1,0 +1,22 @@
+{
+  "folders": [
+    {
+      "name": "ROOT",
+      "path": "../"
+    },
+    {
+      "name": "🗄️ BACKEND",
+      "path": "../apps/backend"
+    },
+    {
+      "name": "🖼️ UI",
+      "path": "../apps/ui"
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "node_modules/": true,
+    },
+    "typescript.tsdk": "🗄️ BACKEND/node_modules/typescript/lib",
+  }
+}
