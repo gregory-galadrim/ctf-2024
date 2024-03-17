@@ -2,15 +2,19 @@
   "folders": [
     {
       "name": "ROOT",
-      "path": "../"
+      "path": "../",
     },
     {
       "name": "🗄️ BACKEND",
-      "path": "../apps/backend"
+      "path": "../apps/backend",
     },
     {
       "name": "🖼️ UI",
-      "path": "../apps/ui"
+      "path": "../apps/ui",
+    },
+    {
+      "name": "📦 STEPS",
+      "path": "../packages/steps",
     },
   ],
   "settings": {
@@ -18,5 +22,6 @@
       "node_modules/": true,
     },
     "typescript.tsdk": "🗄️ BACKEND/node_modules/typescript/lib",
-  }
+    "editor.formatOnSave": true,
+  },
 }

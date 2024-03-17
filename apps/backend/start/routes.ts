@@ -7,10 +7,12 @@
 |
 */
 
+const StepsController = () => import('#controllers/steps_controller')
 import router from '@adonisjs/core/services/router'
+import { STEP_IDENTIFIERS, isStepName } from 'steps'
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
+Object.entries(STEP_IDENTIFIERS).forEach(([stepName, stepId]) => {
+  if (isStepName(stepName)) {
+    router.post(stepId, [StepsController, stepName])
   }
 })
