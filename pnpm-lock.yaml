@@ -34,6 +34,9 @@ importers:
       reflect-metadata:
         specifier: ^0.2.1
         version: 0.2.1
+      steps:
+        specifier: workspace:*
+        version: link:../../packages/steps
     devDependencies:
       '@adonisjs/assembler':
         specifier: ^7.1.1

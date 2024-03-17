@@ -57,7 +57,8 @@
     "@vinejs/vine": "^1.7.1",
     "luxon": "^3.4.4",
     "pg": "^8.11.3",
-    "reflect-metadata": "^0.2.1"
+    "reflect-metadata": "^0.2.1",
+    "steps": "workspace:*"
   },
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/app"
