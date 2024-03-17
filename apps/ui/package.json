@@ -16,8 +16,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
+    "steps": "workspace:*",
     "vitest": "^1.4.0",
-    "steps": "workspace:*"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

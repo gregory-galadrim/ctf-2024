@@ -15,4 +15,8 @@ export default class StepsController {
 
     return this.stepsService.checkStepOne(answer)
   }
+
+  async Two() {
+    throw Error('Not implemented')
+  }
 }
