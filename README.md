@@ -10,6 +10,7 @@ Before all, run
 
 ```bash
 pnpm install
+pnpm steps build
 ```
 
 ### Start the database
@@ -21,11 +22,11 @@ pnpm run dev:db
 ### Start the backend
 
 ```bash
-pnpm run dev:backend
+pnpm backend dev
 ```
 
 ### Start the frontend
 
 ```bash
-pnpm run dev:ui
+pnpm ui dev
 ```
