@@ -12,13 +12,13 @@ import {
  */
 export class StepFormStore {
   // Properties
-  apiEndpoint: string;
+  stepId: string;
   answer: string;
   checkResult: CheckAnswerQueryResponse | null;
 
   // Constructor
-  constructor(apiEndpoint: string) {
-    this.apiEndpoint = apiEndpoint;
+  constructor(stepId: string) {
+    this.stepId = stepId;
     this.answer = '';
     this.checkResult = null;
 
@@ -30,7 +30,7 @@ export class StepFormStore {
     if (this.checkResult?.isCorrect === true) {
       return;
     }
-    const query = await checkAnswer({ endpoint: this.apiEndpoint, answer: this.answer });
+    const query = await checkAnswer({ stepId: this.stepId, payload: { answer: this.answer } });
     const response = await query.json();
 
     this.checkResult = CheckAnswerQueryResponseSchema.parse(response);

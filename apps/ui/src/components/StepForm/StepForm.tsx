@@ -4,12 +4,12 @@ import { useMemo } from 'react';
 import { StepFormStore } from './store';
 
 type StepFormProps = {
-  apiEndpoint: string;
+  stepId: string;
 };
 
-export const StepForm = observer(({ apiEndpoint }: StepFormProps) => {
+export const StepForm = observer(({ stepId }: StepFormProps) => {
   // eslint-disable-next-line
-  const store = useMemo(() => new StepFormStore(apiEndpoint), []);
+  const store = useMemo(() => new StepFormStore(stepId), []);
 
   const handleSubmit = action(async (e: React.FormEvent) => {
     e.preventDefault();

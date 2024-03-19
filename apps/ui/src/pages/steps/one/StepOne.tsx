@@ -7,7 +7,7 @@ export const StepOnePage = observer(() => {
   return (
     <StepPageLayout>
       <p>Qui est la personne considérée comme la première à avoir programmé ?</p>
-      <StepForm apiEndpoint={`/${STEP_IDENTIFIERS.One}`} />
+      <StepForm stepId={STEP_IDENTIFIERS.One} />
     </StepPageLayout>
   );
 });
