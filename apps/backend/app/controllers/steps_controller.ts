@@ -9,14 +9,22 @@ import { HttpContext } from '@adonisjs/core/http'
 export default class StepsController {
   constructor(protected stepsService: StepService) {}
 
-  async One({ request }: HttpContext) {
+  async checkOne({ request }: HttpContext) {
     const data = request.all()
     const { answer } = await checkStepValidator.validate(data)
 
-    return this.stepsService.checkStepOne(answer)
+    return this.stepsService.checkStepN('One', answer)
   }
 
-  async Two() {
+  async getOne() {
+    return this.stepsService.getStepN('One')
+  }
+
+  async checkTwo() {
+    throw Error('Not implemented')
+  }
+
+  async getTwo() {
     throw Error('Not implemented')
   }
 }

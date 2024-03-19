@@ -4,6 +4,7 @@ import {
   CheckAnswerQueryResponseSchema,
   checkAnswer,
 } from '../../services/api/queries/checkAnswer';
+import { LoadQuestionQueryResponseSchema, loadQuestion } from '../../services/api/queries/loadQuestion';
 
 /**
  * StepFormStore
@@ -12,15 +13,19 @@ import {
  */
 export class StepFormStore {
   // Properties
-  apiEndpoint: string;
+  stepId: string;
   answer: string;
+  question: string | null;
   checkResult: CheckAnswerQueryResponse | null;
+  isLoading: boolean;
 
   // Constructor
-  constructor(apiEndpoint: string) {
-    this.apiEndpoint = apiEndpoint;
+  constructor(stepId: string) {
+    this.question = null;
+    this.stepId = stepId;
     this.answer = '';
     this.checkResult = null;
+    this.isLoading = false;
 
     makeAutoObservable(this);
   }
@@ -30,9 +35,18 @@ export class StepFormStore {
     if (this.checkResult?.isCorrect === true) {
       return;
     }
-    const query = await checkAnswer({ endpoint: this.apiEndpoint, answer: this.answer });
+    const query = await checkAnswer({ stepId: this.stepId, payload: { answer: this.answer } });
     const response = await query.json();
 
     this.checkResult = CheckAnswerQueryResponseSchema.parse(response);
+  }
+
+  async loadQuestion() {
+    this.isLoading = true;
+    const query = await loadQuestion({ stepId: this.stepId });
+    const response = await query.json();
+
+    this.question = LoadQuestionQueryResponseSchema.parse(response).question;
+    this.isLoading = false;
   }
 }
