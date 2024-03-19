@@ -13,4 +13,13 @@ export class ApiService {
 
     return fetch(this.API_BASE_URL + url, { ...defaultOptions, ...options });
   }
+
+  static async get(url: string, options?: RequestInit) {
+    const defaultOptions: RequestInit = {
+      method: 'GET',
+      mode: 'cors',
+    };
+
+    return fetch(this.API_BASE_URL + url, { ...defaultOptions, ...options });
+  }
 }

@@ -4,6 +4,7 @@ import {
   CheckAnswerQueryResponseSchema,
   checkAnswer,
 } from '../../services/api/queries/checkAnswer';
+import { LoadQuestionQueryResponseSchema, loadQuestion } from '../../services/api/queries/loadQuestion';
 
 /**
  * StepFormStore
@@ -14,13 +15,17 @@ export class StepFormStore {
   // Properties
   stepId: string;
   answer: string;
+  question: string | null;
   checkResult: CheckAnswerQueryResponse | null;
+  isLoading: boolean;
 
   // Constructor
   constructor(stepId: string) {
+    this.question = null;
     this.stepId = stepId;
     this.answer = '';
     this.checkResult = null;
+    this.isLoading = false;
 
     makeAutoObservable(this);
   }
@@ -34,5 +39,14 @@ export class StepFormStore {
     const response = await query.json();
 
     this.checkResult = CheckAnswerQueryResponseSchema.parse(response);
+  }
+
+  async loadQuestion() {
+    this.isLoading = true;
+    const query = await loadQuestion({ stepId: this.stepId });
+    const response = await query.json();
+
+    this.question = LoadQuestionQueryResponseSchema.parse(response).question;
+    this.isLoading = false;
   }
 }

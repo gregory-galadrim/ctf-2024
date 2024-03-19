@@ -1,13 +1,16 @@
-import { STEP_IDENTIFIERS } from 'steps'
+import { StepName } from 'steps'
+import { STEP_NAME_TO_STRINGS } from './constants.js'
 
 export default class StepService {
-  private STEP_ONE_ANSWER = 'ADA LOVELACE'
+  getStepN(stepName: StepName) {
+    return { question: STEP_NAME_TO_STRINGS[stepName].question }
+  }
 
-  checkStepOne(toCheck: string) {
-    const isCorrect = toCheck.toLocaleUpperCase() === this.STEP_ONE_ANSWER
+  checkStepN(stepName: StepName, toCheck: string) {
+    const isCorrect = toCheck.toLocaleUpperCase() === STEP_NAME_TO_STRINGS[stepName].answer
     const message = isCorrect
-      ? `Tu as trouvé le premier oeuf !\nIl me semble que le suivant a un lien avec "${STEP_IDENTIFIERS.Two}"`
-      : 'Mauvaise réponse'
+      ? STEP_NAME_TO_STRINGS[stepName].rightAnswerMessage
+      : STEP_NAME_TO_STRINGS[stepName].wrongAnswerMessage
     return {
       isCorrect,
       message,
