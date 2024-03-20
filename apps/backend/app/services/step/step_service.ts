@@ -7,7 +7,7 @@ export default class StepService {
   }
 
   checkStepN(stepName: StepName, toCheck: string) {
-    const isCorrect = toCheck.toLocaleUpperCase() === STEP_NAME_TO_STRINGS[stepName].answer
+    const isCorrect = toCheck === STEP_NAME_TO_STRINGS[stepName].answer
     const message = isCorrect
       ? STEP_NAME_TO_STRINGS[stepName].rightAnswerMessage
       : STEP_NAME_TO_STRINGS[stepName].wrongAnswerMessage

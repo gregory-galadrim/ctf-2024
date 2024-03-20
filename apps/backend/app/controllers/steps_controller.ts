@@ -20,11 +20,14 @@ export default class StepsController {
     return this.stepsService.getStepN('One')
   }
 
-  async checkTwo() {
-    throw Error('Not implemented')
+  async checkTwo({ request }: HttpContext) {
+    const data = request.all()
+    const { answer } = await checkStepValidator.validate(data)
+
+    return this.stepsService.checkStepN('Two', answer)
   }
 
   async getTwo() {
-    throw Error('Not implemented')
+    return this.stepsService.getStepN('Two')
   }
 }
