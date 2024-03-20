@@ -1,6 +1,6 @@
 // import type { HttpContext } from '@adonisjs/core/http'
 
-import StepService from '#services/step_service'
+import StepService from '#services/step/step_service'
 import { checkStepValidator } from '#validators/step'
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
