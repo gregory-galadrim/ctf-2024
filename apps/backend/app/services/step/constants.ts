@@ -16,8 +16,14 @@ export const STEP_NAME_TO_STRINGS: Record<StepName, StepStrings> = {
   },
   Two: {
     question: 'PyBDIGVnYWduYWwgZWwgw6l0bmV2bmkgYSBpdVE=',
-    answer: 'ZWloY3RpUiBzaW5uZUQ=',
+    answer: 'RUlIQ1RJUiBTSU5ORUQ=',
     wrongAnswerMessage: 'Mauvaise réponse',
-    rightAnswerMessage: 'Bonne réponse !',
+    rightAnswerMessage: `Tu as trouvé le deuxième oeuf !\nIl me semble que le suivant a un lien avec "${STEP_IDENTIFIERS.Three}"`,
+  },
+  Three: {
+    question: 'To do',
+    answer: 'To do',
+    wrongAnswerMessage: 'To do',
+    rightAnswerMessage: 'To do',
   },
 }
