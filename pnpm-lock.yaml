@@ -43,6 +43,9 @@ importers:
       steps:
         specifier: workspace:*
         version: link:../../packages/steps
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
     devDependencies:
       '@adonisjs/assembler':
         specifier: ^7.1.1
