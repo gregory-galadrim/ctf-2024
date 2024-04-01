@@ -21,6 +21,13 @@ export const STEP_NAME_TO_STRINGS: Record<StepName, StepStrings> = {
     rightAnswerMessage: `Tu as trouvé le deuxième oeuf !\nIl me semble que le suivant a un lien avec "${STEP_IDENTIFIERS.Three}"`,
   },
   Three: {
+    question:
+      'Quel type de routage est principalement utilisé entre les routeurs de différents opérateurs Internet de différents pays ?',
+    answer: 'BGP',
+    wrongAnswerMessage: 'Mauvaise réponse',
+    rightAnswerMessage: `Tu as trouvé le troisième oeuf !\nIl me semble que le suivant a un lien avec "${STEP_IDENTIFIERS.Four}"`,
+  },
+  Four: {
     question: 'To do',
     answer: 'To do',
     wrongAnswerMessage: 'To do',

@@ -21,6 +21,11 @@ test.group('steps checking', (group) => {
         answer: 'RUlIQ1RJUiBTSU5ORUQ=',
         nextStepIdentifier: STEP_IDENTIFIERS.Three,
       },
+      {
+        stepName: 'Three',
+        answer: 'BGP',
+        nextStepIdentifier: STEP_IDENTIFIERS.Four,
+      },
     ]
   })
 

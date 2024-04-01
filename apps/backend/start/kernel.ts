@@ -38,4 +38,9 @@ router.use([() => import('@adonisjs/core/bodyparser_middleware')])
  * Named middleware collection must be explicitly assigned to
  * the routes or the routes group.
  */
-export const middleware = router.named({})
+export const middleware = router.named({
+  jwtParser: () => import('#middleware/parse_jwt_middleware'),
+})
+
+export type MiddlewareName = keyof typeof middleware
+export type Middleware = ReturnType<(typeof middleware)[MiddlewareName]>

@@ -10,35 +10,42 @@ import { StepName } from 'steps'
 export default class StepsController {
   constructor(protected stepsService: StepService) {}
 
-  private async stepChecker(stepName: StepName, { request }: HttpContext) {
+  private async stepNChecker(stepName: StepName, { request }: HttpContext) {
     const data = request.all()
     const { answer } = await checkStepValidator.validate(data)
 
     return this.stepsService.checkStepN(stepName, answer)
   }
 
-  private async stepGetter(stepName: StepName) {
+  private async stepNGetter(stepName: StepName) {
     return this.stepsService.getStepN(stepName)
   }
 
   async checkOne(ctx: HttpContext) {
-    return this.stepChecker('One', ctx)
+    return this.stepNChecker('One', ctx)
   }
   async getOne() {
-    return this.stepGetter('One')
+    return this.stepNGetter('One')
   }
 
   async checkTwo(ctx: HttpContext) {
-    return this.stepChecker('Two', ctx)
+    return this.stepNChecker('Two', ctx)
   }
   async getTwo() {
-    return this.stepGetter('Two')
+    return this.stepNGetter('Two')
   }
 
   async checkThree(ctx: HttpContext) {
-    return this.stepChecker('Three', ctx)
+    return this.stepNChecker('Three', ctx)
   }
   async getThree() {
-    return this.stepGetter('Three')
+    return this.stepNGetter('Three')
+  }
+
+  async checkFour(ctx: HttpContext) {
+    return this.stepNChecker('Four', ctx)
+  }
+  async getFour() {
+    return this.stepNGetter('Four')
   }
 }
