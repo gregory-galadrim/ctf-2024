@@ -10,24 +10,19 @@
 const StepsController = () => import('#controllers/steps_controller')
 import { STEP_NAME_TO_STRINGS } from '#services/step/constants'
 import router from '@adonisjs/core/services/router'
-import { STEP_IDENTIFIERS, StepName, isStepName } from 'steps'
-import { Middleware, middleware } from './kernel.js'
+import { STEP_IDENTIFIERS, isStepName } from 'steps'
+import { middleware } from './kernel.js'
 
-const stepMiddleWares: Partial<Record<StepName, Middleware>> = {
+const stepMiddleWares = {
+  One: middleware.doNothing(),
+  Two: middleware.doNothing(),
   Three: middleware.jwtParser({ secret: STEP_NAME_TO_STRINGS.Two.answer }),
-}
+  Four: middleware.doNothing(),
+} as const
 
 Object.entries(STEP_IDENTIFIERS).forEach(([stepName, stepId]) => {
   if (isStepName(stepName)) {
     router.get(stepId, [StepsController, `get${stepName}`])
-    const checkRoute = router.post(stepId, [StepsController, `check${stepName}`])
-
-    const stepMiddleware = stepMiddleWares[stepName]
-
-    if (!stepMiddleware) {
-      return
-    }
-
-    checkRoute.use(stepMiddleware)
+    router.post(stepId, [StepsController, `check${stepName}`]).use(stepMiddleWares[stepName])
   }
 })

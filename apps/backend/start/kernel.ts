@@ -40,6 +40,7 @@ router.use([() => import('@adonisjs/core/bodyparser_middleware')])
  */
 export const middleware = router.named({
   jwtParser: () => import('#middleware/parse_jwt_middleware'),
+  doNothing: () => import('#middleware/do_nothing_middleware'),
 })
 
 export type MiddlewareName = keyof typeof middleware
