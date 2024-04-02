@@ -18,7 +18,7 @@ test.group('steps checking', (group) => {
       { stepName: 'One', answer: 'ADA LOVELACE', nextStepIdentifier: STEP_IDENTIFIERS.Two },
       {
         stepName: 'Two',
-        answer: 'RUlIQ1RJUiBTSU5ORUQ=',
+        answer: 'ADA LOVELACE',
         nextStepIdentifier: STEP_IDENTIFIERS.Three,
       },
       {

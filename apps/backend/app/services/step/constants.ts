@@ -15,8 +15,8 @@ export const STEP_NAME_TO_STRINGS: Record<StepName, StepStrings> = {
     rightAnswerMessage: `Tu as trouvé le premier oeuf !\nIl me semble que le suivant a un lien avec "${STEP_IDENTIFIERS.Two}"`,
   },
   Two: {
-    question: 'PyBDIGVnYWduYWwgZWwgw6l0bmV2bmkgYSBpdVE=',
-    answer: 'RUlIQ1RJUiBTSU5ORUQ=',
+    question: 'Quelle est la réponse à la question précédente ?',
+    answer: 'ADA LOVELACE',
     wrongAnswerMessage: 'Mauvaise réponse',
     rightAnswerMessage: `Tu as trouvé le deuxième oeuf !\nIl me semble que le suivant a un lien avec "${STEP_IDENTIFIERS.Three}"`,
   },

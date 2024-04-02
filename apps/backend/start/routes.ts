@@ -13,16 +13,23 @@ import router from '@adonisjs/core/services/router'
 import { STEP_IDENTIFIERS, isStepName } from 'steps'
 import { middleware } from './kernel.js'
 
-const stepMiddleWares = {
+const stepCheckMiddleWares = {
   One: middleware.doNothing(),
-  Two: middleware.doNothing(),
+  Two: middleware.encrypt(),
   Three: middleware.jwtParser({ secret: STEP_NAME_TO_STRINGS.Two.answer }),
+  Four: middleware.doNothing(),
+} as const
+
+const stepGetMiddleWares = {
+  One: middleware.doNothing(),
+  Two: middleware.encrypt(),
+  Three: middleware.doNothing(),
   Four: middleware.doNothing(),
 } as const
 
 Object.entries(STEP_IDENTIFIERS).forEach(([stepName, stepId]) => {
   if (isStepName(stepName)) {
-    router.get(stepId, [StepsController, `get${stepName}`])
-    router.post(stepId, [StepsController, `check${stepName}`]).use(stepMiddleWares[stepName])
+    router.get(stepId, [StepsController, `get${stepName}`]).use(stepGetMiddleWares[stepName])
+    router.post(stepId, [StepsController, `check${stepName}`]).use(stepCheckMiddleWares[stepName])
   }
 })
