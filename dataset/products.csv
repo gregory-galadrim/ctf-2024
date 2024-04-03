@@ -1,0 +1,51 @@
+id,name,brand,price
+1,Smartphone X,ABC Electronics,599.99
+2,Laptop Y,XYZ Tech,899.99
+3,Tablet Z,123 Gadgets,349.99
+4,Smartwatch A,Acme Wearables,199.99
+5,Headphones B,Beta Audio,79.99
+6,Smart TV C,Gamma Displays,1499.99
+7,Drone D,Delta Drones,299.99
+8,Bluetooth Speaker E,Phoenix Sound,49.99
+9,Gaming Console F,Golden Gaming,399.99
+10,Wireless Earbuds G,Silver Sound,129.99
+11,VR Headset H,Red Reality,299.99
+12,Action Camera I,Green Gear,199.99
+13,Fitness Tracker J,Blue Fitness,89.99
+14,Portable Projector K,Orange Visuals,249.99
+15,Electric Scooter L,Violet Mobility,499.99
+16,Robot Vacuum M,Black Robotics,199.99
+17,Security Camera N,Yellow Security,129.99
+18,Smart Thermostat O,White Climate,179.99
+19,Smart Doorbell P,Techno Security,199.99
+20,Wireless Charger Q,Magenta Charging,29.99
+21,Gaming Keyboard R,Dynamic Keyboards,149.99
+22,External Hard Drive S,Superior Storage,99.99
+23,Wireless Mouse T,Infinite Mice,49.99
+24,Graphic Tablet U,Innovative Design,199.99
+25,USB Flash Drive V,Peak Storage,19.99
+26,Wireless Router W,New Horizons Networks,79.99
+27,Smart Home Hub X,Global Innovations,149.99
+28,Bluetooth Headset Y,Endless Audio,59.99
+29,Portable Monitor Z,Dynamic Displays,299.99
+30,Computer Mouse AA,Paragon Peripherals,39.99
+31,Wireless Keyboard BB,Alpha Keyboards,69.99
+32,Power Bank CC,Bravo Power,49.99
+33,External SSD DD,Charlie Storage,149.99
+34,Webcam EE,Maximus Cameras,79.99
+35,Compact Printer FF,Prime Printing,129.99
+36,Wireless Earphones GG,Omega Audio,99.99
+37,Home Theater System HH,Quantum Audio,399.99
+38,Compact Camera II,Sunrise Cameras,299.99
+39,Fitness Watch JJ,Visionary Fitness,129.99
+40,Digital Photo Frame KK,Skyline Displays,89.99
+41,Smart Scale LL,United Health,59.99
+42,Bluetooth Receiver MM,Spectrum Audio,29.99
+43,Car Dash Cam NN,ABC Dashcams,149.99
+44,Wireless Gaming Mouse OO,XYZ Gaming,79.99
+45,Smart Home Plug PP,123 Smart,39.99
+46,Gaming Monitor QQ,Acme Gaming,299.99
+47,Noise-Canceling Headphones RR,Beta Audio,149.99
+48,Bluetooth Car Kit SS,Gamma Tech,49.99
+49,Wireless Charging Pad TT,Delta Charging,29.99
+50,Wireless Sports Earbuds UU,Phoenix Audio,79.99

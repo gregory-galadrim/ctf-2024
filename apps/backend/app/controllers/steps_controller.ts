@@ -43,9 +43,20 @@ export default class StepsController {
   }
 
   async checkFour(ctx: HttpContext) {
-    return this.stepNChecker('Four', ctx)
+    const data = ctx.request.all()
+    const { answer } = await checkStepValidator.validate(data)
+    const result = await this.stepsService.checkInjectionStep(answer)
+
+    return result
   }
   async getFour() {
     return this.stepNGetter('Four')
+  }
+
+  async checkFive(ctx: HttpContext) {
+    return this.stepNChecker('Five', ctx)
+  }
+  async getFive() {
+    return this.stepNGetter('Five')
   }
 }
