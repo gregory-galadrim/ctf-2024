@@ -18,6 +18,7 @@ const stepCheckMiddleWares = {
   Two: middleware.encrypt(),
   Three: middleware.jwtParser({ secret: STEP_NAME_TO_STRINGS.Two.answer }),
   Four: middleware.doNothing(),
+  Five: middleware.doNothing(),
 } as const
 
 const stepGetMiddleWares = {
@@ -25,6 +26,7 @@ const stepGetMiddleWares = {
   Two: middleware.encrypt(),
   Three: middleware.doNothing(),
   Four: middleware.doNothing(),
+  Five: middleware.doNothing(),
 } as const
 
 Object.entries(STEP_IDENTIFIERS).forEach(([stepName, stepId]) => {

@@ -18,6 +18,16 @@ const dbConfig = defineConfig({
         paths: ['database/migrations'],
       },
     },
+    injection: {
+      client: 'pg',
+      connection: {
+        host: env.get('INJECTION_DB_HOST'),
+        port: env.get('INJECTION_DB_PORT'),
+        user: env.get('INJECTION_DB_USER'),
+        password: env.get('INJECTION_DB_PASSWORD'),
+        database: env.get('INJECTION_DB_DATABASE'),
+      },
+    },
   },
 })
 

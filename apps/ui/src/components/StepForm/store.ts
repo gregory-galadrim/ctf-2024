@@ -38,15 +38,27 @@ export class StepFormStore {
     const query = await checkAnswer({ stepId: this.stepId, payload: { answer: this.answer } });
     const response = await query.json();
 
-    this.checkResult = CheckAnswerQueryResponseSchema.parse(response);
+    this.setCheckResult(CheckAnswerQueryResponseSchema.parse(response));
   }
 
   async loadQuestion() {
-    this.isLoading = true;
+    this.setIsLoading(true);
     const query = await loadQuestion({ stepId: this.stepId });
     const response = await query.json();
 
-    this.question = LoadQuestionQueryResponseSchema.parse(response).question;
-    this.isLoading = false;
+    this.setQuestion(LoadQuestionQueryResponseSchema.parse(response).question);
+    this.setIsLoading(false);
+  }
+
+  setIsLoading(value: boolean) {
+    this.isLoading = value;
+  }
+
+  setCheckResult(value: CheckAnswerQueryResponse) {
+    this.checkResult = value;
+  }
+
+  setQuestion(value: string) {
+    this.question = value;
   }
 }

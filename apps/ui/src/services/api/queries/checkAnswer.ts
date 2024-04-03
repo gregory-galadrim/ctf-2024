@@ -7,7 +7,7 @@ type CheckAnswerProps = {
 };
 
 export const checkAnswer = async ({ stepId, payload }: CheckAnswerProps) => {
-  return await ApiService.post(`/${stepId}`, { body: JSON.stringify(payload) });
+  return ApiService.post(`/${stepId}`, { body: JSON.stringify(payload) });
 };
 
 export const CheckAnswerQueryResponseSchema = z.object({

@@ -40,7 +40,7 @@ export const StepForm = observer(({ stepId }: StepFormProps) => {
             <button className="text-black bg-white p-1">Valider</button>
           </div>
         </form>
-        {store.checkResult ? <p className="whitespace-pre-line">{store.checkResult.message}</p> : null}
+        {store.checkResult ? <p className="whitespace-pre-line break-words">{store.checkResult.message}</p> : null}
       </div>
     </>
   );

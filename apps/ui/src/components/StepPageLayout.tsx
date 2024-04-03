@@ -3,5 +3,7 @@ type StepPageLayoutProps = {
 };
 
 export const StepPageLayout = ({ children }: StepPageLayoutProps) => {
-  return <div className="bg-black text-white h-screen w-screen p-2 flex flex-col gap-4">{children}</div>;
+  return (
+    <div className="bg-black text-white min-h-screen w-screen max-w-screen p-2 flex flex-col gap-4">{children}</div>
+  );
 };
