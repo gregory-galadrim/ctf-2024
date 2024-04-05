@@ -12,3 +12,6 @@ export type StepIdentifier = (typeof STEP_IDENTIFIERS)[StepName];
 export const isStepName = (name: string): name is StepName => {
   return Object.keys(STEP_IDENTIFIERS).includes(name);
 };
+
+export const SCOREBOARD_IDENTIFIER =
+  "f0b48f1d9989bfc12af3abe028081acd" as const;

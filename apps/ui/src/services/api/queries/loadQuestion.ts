@@ -7,7 +7,7 @@ type LoadQuestionProps = {
 
 export const loadQuestion = async ({ stepId }: LoadQuestionProps) => {
   try {
-    return await ApiService.get(`/${stepId}`);
+    return await ApiService.get(`/${stepId}`, { credentials: 'include' });
   } catch (error) {
     console.error('Error ', error);
     throw error;
