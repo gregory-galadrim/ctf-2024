@@ -53,7 +53,7 @@ export default class StepService {
     if (answer === STEP_NAME_TO_STRINGS['Five'].answer) {
       return {
         isCorrect: true,
-        message: STEP_NAME_TO_STRINGS['Five'],
+        message: STEP_NAME_TO_STRINGS['Five'].rightAnswerMessage,
       }
     }
 
