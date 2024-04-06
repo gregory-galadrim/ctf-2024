@@ -50,6 +50,13 @@ export default class StepService {
   }
 
   async checkNodeInjectionStep(answer: string) {
+    if (answer === STEP_NAME_TO_STRINGS['Five'].answer) {
+      return {
+        isCorrect: true,
+        message: STEP_NAME_TO_STRINGS['Five'],
+      }
+    }
+
     if (answer.length > 256) {
       return {
         isCorrect: false,
