@@ -6,3 +6,21 @@
   margin: 0;
   padding: 0;
 }
+
+code {
+  background: #222;
+  padding-block: 2px;
+  padding-inline: 4px;
+  border-radius: 2px;
+}
+
+pre {
+  background: #181818;
+  padding-inline: 8px;
+  padding-block: 8px;
+  border-radius: 4px;
+}
+
+pre code {
+  background: none;
+}

@@ -26,7 +26,7 @@ export const StepForm = observer(({ stepId }: StepFormProps) => {
 
   return (
     <>
-      <p>{question}</p>
+      <p dangerouslySetInnerHTML={{ __html: question ?? "Not found"}} className='whitespace-pre-wrap'/>
       <div className="flex flex-col gap-4">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-row gap-4">

@@ -7,7 +7,8 @@
     "dev:db": "docker-compose up --build -d",
     "ui": "pnpm --filter ui",
     "backend": "pnpm --filter backend",
-    "steps": "pnpm --filter steps"
+    "steps": "pnpm --filter steps",
+    "docker:node": "cd ./apps/backend/utils && ./build-docker.sh"
   },
   "keywords": [],
   "author": "",

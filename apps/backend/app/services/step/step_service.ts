@@ -2,6 +2,7 @@ import { injectionDb } from '#services/database/injection'
 import { errors } from '@adonisjs/core/http'
 import { StepName } from 'steps'
 import { STEP_NAME_TO_STRINGS, StepStrings } from './constants.js'
+import { spawnSync } from 'node:child_process'
 
 export default class StepService {
   getStepN(stepName: StepName) {
@@ -46,5 +47,43 @@ export default class StepService {
     }
 
     return this.checkStepN('Four', eggNameFromDb, { wrongAnswerMessage: JSON.stringify(res) })
+  }
+
+  async checkNodeInjectionStep(answer: string) {
+    if (answer.length > 256) {
+      return {
+        isCorrect: false,
+        message: 'username too long',
+      }
+    }
+
+    // T^T
+    if (
+      /while\s*\(1\)/.test(answer) ||
+      /while\s*\(true\)/.test(answer) ||
+      /for\s*\(.*;true;.*\)/.test(answer) ||
+      /for\s*\(.*;1?;.*\)/.test(answer)
+    ) {
+      return {
+        isCorrect: false,
+        message: 'Merci de ne pas submit des boucles infinies.',
+      }
+    }
+
+    const child = spawnSync('./utils/launch-docker.sh', [answer], { encoding: 'utf8' })
+    if (child.error) {
+      console.log('ERROR: ', child.error)
+    }
+    console.log('ERROR: ', child.stderr)
+    console.log('STDOUT: ' + child.stdout)
+
+    let stdout =
+      child.stdout.replace(/(\w+) ALL=\(ALL:ALL\) ALL\n/, '') +
+      (child.stderr?.replace(/chpasswd: password for '(\w+)' changed/, '') ?? '') +
+      (child.error ?? '')
+
+    stdout = stdout.trimEnd()
+
+    return this.checkStepN('Four', child.stdout, { wrongAnswerMessage: JSON.stringify(stdout) })
   }
 }
