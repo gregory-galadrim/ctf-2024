@@ -2,7 +2,7 @@ import { injectionDb } from '#services/database/injection'
 import { errors } from '@adonisjs/core/http'
 import { StepName } from 'steps'
 import { STEP_NAME_TO_STRINGS, StepStrings } from './constants.js'
-import { spawnSync } from 'node:child_process'
+import { spawn, spawnSync } from 'node:child_process'
 
 export default class StepService {
   getStepN(stepName: StepName) {
@@ -77,20 +77,36 @@ export default class StepService {
       }
     }
 
-    const child = spawnSync('./utils/launch-docker.sh', [answer], { encoding: 'utf8' })
-    if (child.error) {
-      console.log('ERROR: ', child.error)
-    }
-    console.log('ERROR: ', child.stderr)
-    console.log('STDOUT: ' + child.stdout)
+    const child = spawn('./utils/launch-docker.sh', [answer], {})
+    let stdout = ''
 
-    let stdout =
-      child.stdout.replace(/(\w+) ALL=\(ALL:ALL\) ALL\n/, '') +
-      (child.stderr?.replace(/chpasswd: password for '(\w+)' changed/, '') ?? '') +
-      (child.error ?? '')
+    // Promisify the child process handling
+    const childPromise = new Promise((resolve) => {
+      child.stdout.on('data', (data) => {
+        stdout += data
+      })
 
-    stdout = stdout.trimEnd()
+      child.stderr.on('data', (data) => {
+        stdout += data
+      })
 
-    return this.checkStepN('Four', child.stdout, { wrongAnswerMessage: JSON.stringify(stdout) })
+      child.on('close', () => {
+        stdout =
+          stdout
+            .replace(/(\w+) ALL=\(ALL:ALL\) ALL\n/, '')
+            .replace(/chpasswd: password for '(\w+)' changed/, '') ?? ''
+
+        stdout = stdout.trimEnd()
+
+        // Resolve the promise with the final result
+        resolve({
+          isCorrect: false,
+          message: stdout,
+        })
+      })
+    })
+
+    // Wait for the child process to complete and return the final result
+    return await childPromise
   }
 }
