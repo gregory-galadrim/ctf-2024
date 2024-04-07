@@ -1,4 +1,4 @@
-import { STEP_IDENTIFIERS, StepName } from 'steps'
+import { SCOREBOARD_IDENTIFIER, STEP_IDENTIFIERS, StepName } from 'steps'
 
 export type StepStrings = {
   question: string
@@ -77,9 +77,13 @@ Rvjdlz
 - Le nom d'utilisateur n'a pas de Z/z
 - <code>~/.mozilla</code> appartient à root
 - <b>OS</b>: Alpine Linux (avec node et sudo d'installé)
+- La réponse doit être concaténée avec la réponse précédente (dans l'ordre précédente puis courante)
 `,
-    answer: 'tkimIJrSVJRMkwFAFCdoVPyEUtjafWVJ',
+    answer: '59e868d988a7e360159b67c1bd0165e8tkimIJrSVJRMkwFAFCdoVPyEUtjafWVJ',
     wrongAnswerMessage: 'Mauvaise réponse',
-    rightAnswerMessage: 'Bravo! Tu as gagné :3',
+    rightAnswerMessage: `Tu as trouvé le quatrième oeuf !\nTu mérites de t'inscrire parmi les légendes. (${SCOREBOARD_IDENTIFIER})`,
   },
 }
+
+export const SCOREBOARD_PASSWORD =
+  'ADA LOVELACERUNBTEVWT0wgQURBBGP59e868d988a7e360159b67c1bd0165e8tkimIJrSVJRMkwFAFCdoVPyEUtjafWVJ'

@@ -11,7 +11,8 @@
     "test": "node ace test",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "migrate": "node ace migration:run"
   },
   "imports": {
     "#controllers/*": "./app/controllers/*.js",
@@ -56,6 +57,7 @@
     "@adonisjs/lucid": "^20.1.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@vinejs/vine": "^1.7.1",
+    "axios": "^1.6.8",
     "jsonwebtoken": "^9.0.2",
     "luxon": "^3.4.4",
     "pg": "^8.11.3",

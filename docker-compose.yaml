@@ -1,24 +1,25 @@
 version: "3.9"
 
 services:
-  # postgres:
-  #   image: postgres
-  #   ports:
-  #     - 5432:5432
-  #   volumes:
-  #     - ~/apps/postgres:/var/lib/postgresql/data
-  #   environment:
-  #     - POSTGRES_PASSWORD=ctf2024
-  #     - POSTGRES_USER=ctf2024
-  #     - POSTGRES_DB=ctf2024
-  injection-step-db:
+  postgres:
     image: postgres
     restart: always
     ports:
       - 5432:5432
     volumes:
-      - ./dataset:/docker-entrypoint-initdb.d
+      - ~/apps/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=ctf2024
       - POSTGRES_USER=ctf2024
-      - POSTGRES_DB=ctf2024-injection
+      - POSTGRES_DB=ctf2024
+  # injection-step-db:
+  #   image: postgres
+  #   restart: always
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - ./dataset:/docker-entrypoint-initdb.d
+  #   environment:
+  #     - POSTGRES_PASSWORD=ctf2024
+  #     - POSTGRES_USER=ctf2024
+  #     - POSTGRES_DB=ctf2024-injection

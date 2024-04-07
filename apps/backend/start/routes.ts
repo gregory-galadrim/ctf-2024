@@ -10,8 +10,9 @@
 const StepsController = () => import('#controllers/steps_controller')
 import { STEP_NAME_TO_STRINGS } from '#services/step/constants'
 import router from '@adonisjs/core/services/router'
-import { STEP_IDENTIFIERS, isStepName } from 'steps'
+import { SCOREBOARD_IDENTIFIER, STEP_IDENTIFIERS, isStepName } from 'steps'
 import { middleware } from './kernel.js'
+const ScoreboardController = () => import('#controllers/scoreboard_controller')
 
 const stepCheckMiddleWares = {
   One: middleware.doNothing(),
@@ -35,3 +36,11 @@ Object.entries(STEP_IDENTIFIERS).forEach(([stepName, stepId]) => {
     router.post(stepId, [StepsController, `check${stepName}`]).use(stepCheckMiddleWares[stepName])
   }
 })
+
+router
+  .get(SCOREBOARD_IDENTIFIER, [ScoreboardController, 'getScoreboardEntries'])
+  .use(middleware.auth())
+
+router
+  .post(SCOREBOARD_IDENTIFIER, [ScoreboardController, 'registerParticipant'])
+  .use(middleware.auth())

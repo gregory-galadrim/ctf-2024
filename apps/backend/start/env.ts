@@ -34,4 +34,6 @@ export default await Env.create(new URL('../', import.meta.url), {
   INJECTION_DB_USER: Env.schema.string(),
   INJECTION_DB_PASSWORD: Env.schema.string.optional(),
   INJECTION_DB_DATABASE: Env.schema.string(),
+
+  GALADRIM_TOOLS_SECRET_KEY: Env.schema.string(),
 })
