@@ -1,8 +1,8 @@
 import { injectionDb } from '#services/database/injection'
 import { errors } from '@adonisjs/core/http'
+import { spawn } from 'node:child_process'
 import { StepName } from 'steps'
 import { STEP_NAME_TO_STRINGS, StepStrings } from './constants.js'
-import { spawn, spawnSync } from 'node:child_process'
 
 export default class StepService {
   getStepN(stepName: StepName) {
