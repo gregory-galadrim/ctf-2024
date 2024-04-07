@@ -2,9 +2,16 @@ import { SCOREBOARD_IDENTIFIER } from 'steps';
 import { z } from 'zod';
 import { ApiService } from '../ApiService';
 
-export const registerParticipant = async () => {
+type RegisterParticipantProps = {
+  payload: { password: string };
+};
+
+export const registerParticipant = async ({ payload }: RegisterParticipantProps) => {
   try {
-    return await ApiService.post(`/${SCOREBOARD_IDENTIFIER}`, { credentials: 'include' });
+    return await ApiService.post(`/${SCOREBOARD_IDENTIFIER}`, {
+      credentials: 'include',
+      body: JSON.stringify(payload),
+    });
   } catch (error) {
     // todo handle unauthorized
     console.error('Error ', error);
@@ -13,6 +20,7 @@ export const registerParticipant = async () => {
 };
 
 export const RegisterParticipantQueryResponseSchema = z.object({
-  question: z.string(),
+  message: z.string(),
+  isCorrect: z.boolean(),
 });
 export type RegisterParticipantQueryResponse = z.infer<typeof RegisterParticipantQueryResponseSchema>;

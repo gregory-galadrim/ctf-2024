@@ -1,26 +1,19 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
+import {
+  LoadScoreboardQueryResponseSchema,
+  Participant,
+  loadScoreboard,
+} from '../../services/api/queries/loadScoreboard';
 import { ParticipantRow } from './ParticipantRow';
-import { ParticipantListStore } from './store';
 
 export const ParticipantList = () => {
-  // eslint-disable-next-line
-  const store = useMemo(() => new ParticipantListStore(), []);
+  const [participants, setParticipants] = useState<Participant[]>([]);
 
   useEffect(() => {
-    store.loadParticipantList();
-  }, [store]);
-
-  const participants = useMemo(() => store.participants, [store.participants]);
-
-  console.log(store.participants);
-
-  if (store.isLoading) {
-    return <p>Chargement en cours...</p>;
-  }
-
-  if (!participants) {
-    return <></>;
-  }
+    loadScoreboard()
+      .then((response) => response.json())
+      .then((data) => setParticipants(LoadScoreboardQueryResponseSchema.parse(data)));
+  }, []);
 
   return (
     <div>

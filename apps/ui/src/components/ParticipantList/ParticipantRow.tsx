@@ -6,13 +6,12 @@ type ParticipantRowProps = {
 };
 
 export const ParticipantRow = ({ participant, rank }: ParticipantRowProps) => {
-  console.log('call greg');
   const { username, finished_at } = participant;
+  const formattedDate = `${finished_at.toLocaleDateString()} à ${finished_at.getHours()}:${finished_at.getMinutes()}:${finished_at.getSeconds()}`;
 
-  console.log(`${rank}. ${username}, a terminé le ${finished_at.toString()}`);
   return (
     <p>
-      {rank}. {username}, a terminé le {finished_at.toString()}
+      {rank}. {username}, a terminé le {formattedDate}
     </p>
   );
 };
