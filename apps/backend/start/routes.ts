@@ -23,7 +23,7 @@ const stepCheckMiddleWares = {
 } as const
 
 const stepGetMiddleWares = {
-  One: middleware.auth(),
+  One: middleware.doNothing(),
   Two: middleware.encrypt(),
   Three: middleware.doNothing(),
   Four: middleware.doNothing(),
@@ -37,6 +37,10 @@ Object.entries(STEP_IDENTIFIERS).forEach(([stepName, stepId]) => {
   }
 })
 
-router.get(SCOREBOARD_IDENTIFIER, [ScoreboardController, 'getScoreboardEntries'])
+router
+  .get(SCOREBOARD_IDENTIFIER, [ScoreboardController, 'getScoreboardEntries'])
+  .use(middleware.auth())
 
-router.post(SCOREBOARD_IDENTIFIER, [ScoreboardController, 'registerParticipant'])
+router
+  .post(SCOREBOARD_IDENTIFIER, [ScoreboardController, 'registerParticipant'])
+  .use(middleware.auth())

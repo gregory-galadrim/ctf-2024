@@ -93,7 +93,11 @@ export class UserProvider implements UserProviderContract<User> {
 
     if (!email) return null
 
-    const user = (await User.findBy('email', email)) || (await createUserFromEmail(email))
+    let user = await User.findBy('email', email)
+
+    if (!user) {
+      user = await createUserFromEmail(email)
+    }
 
     return this.buildGuardUser(user)
   }

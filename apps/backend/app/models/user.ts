@@ -13,6 +13,9 @@ export default class User extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
+  @column.dateTime()
+  declare finishedAt: DateTime | null
+
   @column()
   declare email: string
 
