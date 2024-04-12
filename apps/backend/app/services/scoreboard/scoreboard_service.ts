@@ -6,7 +6,7 @@ export default class ScoreboardService {
   async getScoreboardEntries() {
     const participants = await mainDb
       .from('users')
-      .select('username', 'finished_at')
+      .select('id', 'username', 'finished_at')
       .whereNotNull('finished_at')
       .orderBy('finished_at', 'asc')
     return participants
@@ -19,6 +19,16 @@ export default class ScoreboardService {
         message: 'Mauvaise réponse',
       }
     }
+
+    const participants = await this.getScoreboardEntries()
+
+    if (participants.some((p) => p.id === userId)) {
+      return {
+        isCorrect: false,
+        message: 'Vous êtes déjà une légende',
+      }
+    }
+
     await mainDb.from('users').where('id', userId).update({ finished_at: DateTime.now() })
     return {
       isCorrect: true,
